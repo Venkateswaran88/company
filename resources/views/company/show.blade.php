@@ -1,19 +1,17 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Company') }}
+            Show Company
         </h2>
     </x-slot>
-
+    <br/>
     <div class="row">
         <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2> Show Company</h2>
-            </div>
             <div class="pull-right">
                 <a class="btn btn-primary" href="{{ route('company.index') }}"> Back</a>
             </div>
         </div>
+        <br/>
     </div>
    
     <div class="row">

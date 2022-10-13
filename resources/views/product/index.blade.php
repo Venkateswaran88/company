@@ -1,10 +1,5 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Product') }}
-        </h2>
-    </x-slot>
-
+    <br/>
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
@@ -12,6 +7,7 @@
                 <a class="btn btn-success" href="{{ route('product.create') }}"> Create New product</a>
             </div>
         </div>
+        <br/>
     </div>
 
     @if ($message = Session::get('success'))
@@ -44,7 +40,7 @@
                         @csrf
                         @method('DELETE')
         
-                        <button type="submit" class="btn btn-danger">Delete</button>
+                        <button type="submit" class="btn btn-warning">Delete</button>
                     @endif
                 </form>
             </td>

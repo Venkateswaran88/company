@@ -1,19 +1,18 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Company') }}
+            Edit Company
         </h2>
     </x-slot>
-
+    <br/>
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Edit Company</h2>
-            </div>
             <div class="pull-right">
                 <a class="btn btn-primary" href="{{ route('company.index') }}"> Back</a>
             </div>
         </div>
+        <br/>
     </div>
    
     @if ($errors->any())
@@ -83,9 +82,9 @@
             </ul>
 
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-              <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="submit" class="btn">Submit</button>
             </div>
         </div>
-   
+        <br/>
     </form>
 </x-app-layout>
