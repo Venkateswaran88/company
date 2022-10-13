@@ -1,14 +1,16 @@
 <x-app-layout>
     <br/>
-    <div class="row">
-        <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-            <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('company.create') }}"> Create New company</a>
+    @if($isAdmin)
+        <div class="row">
+            <div class="col-lg-12 margin-tb">
+                <div class="pull-left">
+                <div class="pull-right">
+                    <a class="btn btn-success" href="{{ route('company.create') }}"> Create New company</a>
+                </div>
             </div>
+            <br/>
         </div>
-        <br/>
-    </div>
+    @endif
     @if ($message = Session::get('success'))
         <div class="alert alert-success">
             <p>{{ $message }}</p>
