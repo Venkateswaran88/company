@@ -26,6 +26,11 @@
                         {{ __('Product') }}
                     </x-nav-link>
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('resume.index')" :active="request()->routeIs('resume')">
+                        {{ __('Resume') }}
+                    </x-nav-link>
+                </div>
             </div>
 
             <!-- Settings Dropdown -->

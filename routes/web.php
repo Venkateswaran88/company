@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ResumeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
  
     Route::resource('company', CompanyController::class);
     Route::resource('product', ProductController::class);
+    Route::resource('resume', ResumeController::class);
+    Route::post('search-resume', [ResumeController::class, 'searchResume']);
 });
 
 require __DIR__.'/auth.php';
