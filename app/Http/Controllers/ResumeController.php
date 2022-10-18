@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Resume;
 use Illuminate\Http\Request;
+use App\Jobs\ProcessResume;
 use Auth;
 use File;
+use Exception;
 
 class ResumeController extends Controller
 {
@@ -103,22 +105,22 @@ class ResumeController extends Controller
         $request->validate([
             'resume.*' => 'required|mimes:txt,doc,docx'
         ]);
+
         if($request->hasFile('resume')) {
-            $imageNameArr = [];
+            $resumeArr = [];
             foreach ($request->resume as $file) {
-                // you can also use the original name
                 $originalName = $file->getClientOriginalName();
                 $name = pathinfo($originalName, PATHINFO_FILENAME);
                 $filename = rand(1000,99999) . time().'-'. $originalName;
                 $file->move(public_path('resumes'), $filename);
-                $content = File::get(public_path('resumes'). '/' . $filename);
-
-                $resume = new Resume;
-                $resume->name = $name;
-                $resume->filename = $filename;
-                $resume->path = 'resumes';
-                $resume->content = $content;
-                $resume->save();
+                $fileData = ['name' => $name, 'filename' => $filename];
+                $resumeArr[] = $fileData;
+            }
+            try {
+                dispatch(new ProcessResume($resumeArr));
+            }
+            catch(Exception $e) {
+                echo $e->getMessage();
             }
         }
 
